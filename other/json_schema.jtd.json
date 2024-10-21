@@ -1,0 +1,15 @@
+{
+  "elements": {
+    "properties": {
+      "id": {
+        "type": "uint32"
+      },
+      "description": {
+        "type": "string"
+      },
+      "completed": {
+        "type": "boolean"
+      }
+    }
+  }
+}

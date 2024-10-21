@@ -6,11 +6,11 @@
   };
 
   outputs =
-    { systems, nixpkgs, ... }@inputs:
+    { systems, nixpkgs, ... }:
     let
       eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
 
-      erlang_version = "erlang_25";
+      erlang_version = "erlang_26";
     in
     {
       packages = eachSystem (pkgs: { });
@@ -22,8 +22,10 @@
             (
               [
                 gleam
+                elixir
                 beam.interpreters.${erlang_version}
-                beam.packages.${erlang_version}.rebar3 # optional, probably not gonna use it
+                beam.packages.erlang_25.rebar3
+                nil
               ]
               ++ lib.optional stdenv.isLinux inotify-tools
             );
